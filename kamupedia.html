@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html  dir="ltr">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>数値実験トライアル メモ</title>
+        <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+        <link rel="apple-touch-icon-precomposed" href="images/apple-touch-icon.png">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.26.4/css/uikit.gradient.css">
+
+        <!-- <link rel="stylesheet" href="style.css"> -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/diversen/pandoc-uikit@master/style.css">
+        <link href="https://vjs.zencdn.net/5.4.4/video-js.css" rel="stylesheet" />
+        <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+        <!-- <script src="uikit.js"></script> -->
+        <script src="https://cdn.jsdelivr.net/gh/diversen/pandoc-uikit@master/uikit.js"></script>
+        <!-- <script src="scripts.js"></script> -->
+        <script src="https://cdn.jsdelivr.net/gh/diversen/pandoc-uikit@master/scripts.js"></script>
+        <!-- <script src="jquery.sticky-kit.js "></script> -->
+        <script src="https://cdn.jsdelivr.net/gh/diversen/pandoc-uikit@master/jquery.sticky-kit.js"></script>
+
+        <meta name="generator" content="pandoc-uikit" />
+                        <title>数値実験トライアル メモ</title>
+        <style type="text/css">code{white-space: pre;}</style>
+                        <style type="text/css">
+            pre > code.sourceCode { white-space: pre; position: relative; }
+            pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+            pre > code.sourceCode > span:empty { height: 1.2em; }
+            .sourceCode { overflow: visible; }
+            code.sourceCode > span { color: inherit; text-decoration: inherit; }
+            div.sourceCode { margin: 1em 0; }
+            pre.sourceCode { margin: 0; }
+            @media screen {
+            div.sourceCode { overflow: auto; }
+            }
+            @media print {
+            pre > code.sourceCode { white-space: pre-wrap; }
+            pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+            }
+            pre.numberSource code
+              { counter-reset: source-line 0; }
+            pre.numberSource code > span
+              { position: relative; left: -4em; counter-increment: source-line; }
+            pre.numberSource code > span > a:first-child::before
+              { content: counter(source-line);
+                position: relative; left: -1em; text-align: right; vertical-align: baseline;
+                border: none; display: inline-block;
+                -webkit-touch-callout: none; -webkit-user-select: none;
+                -khtml-user-select: none; -moz-user-select: none;
+                -ms-user-select: none; user-select: none;
+                padding: 0 4px; width: 4em;
+                color: #aaaaaa;
+              }
+            pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+            div.sourceCode
+              {   }
+            @media screen {
+            pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+            }
+            code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+            code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+            code span.at { color: #7d9029; } /* Attribute */
+            code span.bn { color: #40a070; } /* BaseN */
+            code span.bu { color: #008000; } /* BuiltIn */
+            code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+            code span.ch { color: #4070a0; } /* Char */
+            code span.cn { color: #880000; } /* Constant */
+            code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+            code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+            code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+            code span.dt { color: #902000; } /* DataType */
+            code span.dv { color: #40a070; } /* DecVal */
+            code span.er { color: #ff0000; font-weight: bold; } /* Error */
+            code span.ex { } /* Extension */
+            code span.fl { color: #40a070; } /* Float */
+            code span.fu { color: #06287e; } /* Function */
+            code span.im { color: #008000; font-weight: bold; } /* Import */
+            code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+            code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+            code span.op { color: #666666; } /* Operator */
+            code span.ot { color: #007020; } /* Other */
+            code span.pp { color: #bc7a00; } /* Preprocessor */
+            code span.sc { color: #4070a0; } /* SpecialChar */
+            code span.ss { color: #bb6688; } /* SpecialString */
+            code span.st { color: #4070a0; } /* String */
+            code span.va { color: #19177c; } /* Variable */
+            code span.vs { color: #4070a0; } /* VerbatimString */
+            code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+        </style>
+                                               
+    </head>
+
+    <body>
+
+
+        <div class="uk-container uk-container-center uk-margin-top uk-margin-large-bottom">
+
+                        <div class="uk-grid" data-uk-grid-margin>
+                <div class="uk-width-1-1">
+                    <h1 class="uk-heading-large">数値実験トライアル
+メモ</h1>
+                                                        </div>
+            </div>
+            
+            <div class="uk-grid" data-uk-grid-margin >          
+                <div class="uk-width-medium-1-4">
+                    <div class="uk-overflow-container" data-uk-sticky="{top:25,media: 768}">
+                        <div class="uk-panel uk-panel-box menu-begin" >
+
+                                                        <ul>
+                                                        <li><a
+                                                        href="#これは何"
+                                                        id="toc-これは何">これは何</a></li>
+                                                        <li><a
+                                                        href="#コマンドの使いかた"
+                                                        id="toc-コマンドの使いかた">コマンドの使いかた</a></li>
+                                                        <li><a
+                                                        href="#homebrew-のインストール方法"
+                                                        id="toc-homebrew-のインストール方法">homebrew
+                                                        のインストール方法</a></li>
+                                                        <li><a
+                                                        href="#vmdをいれてみよう2日目"
+                                                        id="toc-vmdをいれてみよう2日目">VMDをいれてみよう(2日目)</a></li>
+                                                        <li><a
+                                                        href="#熱力学量を見てみよう三日目"
+                                                        id="toc-熱力学量を見てみよう三日目">熱力学量を見てみよう(三日目)</a></li>
+                                                        <li><a
+                                                        href="#加村さんの研究について"
+                                                        id="toc-加村さんの研究について">加村さんの研究について</a></li>
+                                                        <li><a
+                                                        href="#板書記録"
+                                                        id="toc-板書記録">板書記録</a></li>
+                                                        </ul>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                <div class="uk-width-medium-3-4">
+
+                    
+<h1 id="これは何">これは何</h1>
+<p>2023/03/02から始まった新4年生向けの数値実験トライアルで金澤が個人的にとったメモ</p>
+<h1 id="コマンドの使いかた">コマンドの使いかた</h1>
+<p>省略</p>
+<h1 id="homebrew-のインストール方法">homebrew のインストール方法</h1>
+<p>Home
+brewとは、macにおいてアプリケーションのインストール・アンインストールを簡単にするためのソフトである。
+以下ではそのインストール方法を説明する。</p>
+<p>「Home brew インストール 公式」などで検索して公式サイトに行く。
+そこに公開されているインストール用のURLを含むコマンドをコピーする。
+そしてターミナルで実行する。 適宜enterを押してインストールを進める。</p>
+<p>次にパスを通す作業をする。 画面に出ているnext step
+の指示にあるコマンドを打つ。 これでbrewが使えるようになった。</p>
+<p>brewにある機能について。</p>
+<ul>
+<li>インストール</li>
+<li>アンインストール</li>
+<li>brewで入れられるものを探す検索機能</li>
+<li>どういうアプリをbrewから入れたかを検索する機能</li>
+<li>自己診断機能</li>
+</ul>
+<p>以上のような機能をbrewは備えている。</p>
+<p>試みに、</p>
+<ul>
+<li>gnuplot</li>
+<li>g++</li>
+<li>lammps</li>
+</ul>
+<p>を入れることを考える。</p>
+<p>gnuplotとは描画ソフトであり数式やデータから図を作成することが出来る。
+これを入れるためには、</p>
+<pre><code>brew install gnuplot </code></pre>
+<p>とする。 これでインストールしたソフトは</p>
+<pre><code>/opt/homebrewcellar</code></pre>
+<p>に入っている。</p>
+<p>文字が流れるのが止まったら、</p>
+<pre><code>gnuplot</code></pre>
+<p>とするとgnuplotが起動する。
+gnuplotを終了するためにはコントロールとDを同時に押す。</p>
+<p>次にgccを入れる方法を考える。</p>
+<pre><code>brew install gcc</code></pre>
+<p>とするとインストールされる。</p>
+<p>次にhome brewのいろんな機能を試してみる。 homebrewには</p>
+<ul>
+<li>install</li>
+<li>uninstall</li>
+<li>search</li>
+<li>doctor</li>
+<li>list</li>
+</ul>
+<p>のコマンドがある。 これらを</p>
+<pre><code>brew hogehoge</code></pre>
+<p>のhogehogeのところに替えて実行するとそれぞれの機能が実行される。</p>
+<p>例えば</p>
+<pre><code>brew list</code></pre>
+<p>でhomebrew で入れたソフトと依存関係を表示してくれる。</p>
+<pre><code>brew search lammps</code></pre>
+<p>とするとbrewでlammpsを入れられるかを検索できる。</p>
+<h1 id="vmdをいれてみよう2日目">VMDをいれてみよう(2日目)</h1>
+<p>homebrewからは入らないのでブラウザで 「イリノイ大学
+VMD」などで検索する。 自分のアカウントを作成してインストールする。</p>
+<p>コマンドラインを開き、デスクトップディレクトリにいって<code>lammps_try</code>ディレクトリを作りそこに移動する。</p>
+<p>コマンドラインで</p>
+<div class="sourceCode" id="cb8"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> open /</span></code></pre></div>
+<p>としてHDをファインダーで無理やり開く。
+その中でoptというディレクトリを選んでその中にあるhomebrewというディレクトリを開く。
+その中にあるcellarというディレクトリにlammpsというディレクトリができているはずなのでそれを開く。
+その中にあるecampleディレクトリの中にあるmeltディレクトリにあるin.meltファイルをさっき作ったlammps_tryディレクトリにコピーする。</p>
+<p>lammps_tryディレクトリに移動して、</p>
+<div class="sourceCode" id="cb9"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">lmp_serial</span> <span class="at">-in</span> in.melt</span></code></pre></div>
+<p>をコマンドラインで実行するとlammpsが動く。</p>
+<p>次に粒子を可視化することをかんがえる。 in.meltファイルのなかの</p>
+<pre class="lammps"><code># dump id all atom 50 dump.melt</code></pre>
+<p>の部分を</p>
+<pre class="lammps"><code>dump id atom 50 melt.lammpstrj</code></pre>
+<p>に書きかえる。 そして</p>
+<div class="sourceCode" id="cb12"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">lmp_serial</span> <span class="at">-in</span> in.melt</span></code></pre></div>
+<p>を実行する。</p>
+<p>VMDを起動する。(起動に不具合あり・情報求む)
+起動したらFileをクリックしてNewMoleculeをクリックしてさっき作ったmelt.lammpstrjをロードする。</p>
+<p>そうするともじゃもじゃしたよくわからないものが出てくるので、VMDの窓のGraphicsをクリックして見た目を調整する。</p>
+<p>いま、250ステップの計算を行ってそのなかで50ステップずつ軌道のデータを出力する設定になっている。
+試みにステップ数を1500に変更する。 そのために in.meltファイルの</p>
+<pre class="lammps"><code>run 250</code></pre>
+<p>を</p>
+<pre class="lammps"><code>run 1500</code></pre>
+<p>に書きかえる。
+これを実行してVMDで可視化すると、さっきよりも長い時間のアニメーションが見れる。
+他にも密度などを変更してやると面白いことが起こる。</p>
+<p>次に等温系のシミュレーションを行う。
+計算の原理としてどのように行うのかは問題であるが、lammpsは簡単に実行してくれる。
+in.melt ファイルの中にある</p>
+<pre class="lammps"><code>fix      1 all nve</code></pre>
+<p>の部分を探して</p>
+<pre class="lammps"><code>fix     1 all nvt temp 0.8 0.8 $(dt*100)</code></pre>
+<p>に書きかえる。</p>
+<p>lj単位系を採用して無次元化して計算を行っている。 ので、例えば<a
+href="https://en.wikipedia.org/wiki/Lennard-Jones_potential">Lennard-Jones
+potential</a>
+にある銅の相図にあるいろんなパラメタを突っ込んで様子を見てみるのも良い。</p>
+<h1 id="熱力学量を見てみよう三日目">熱力学量を見てみよう(三日目)</h1>
+<p>in.meltをlammpsで処理すると<code>log.lammps</code>というファイルができる。
+このファイルにはどのようにしてlammpsを実行したのか、計算した熱力学量の値の記録がされている。</p>
+<p>step Temp M_mol
+などと書かれていてその下に数値がずらっと並んでいるところを見てみよう。
+ここには計算ステップごとの温度や一粒子あたりの相互作用エネルギーなどが記録されている。
+この数値の部分だけを適当なファイルにコピーしておこう。
+このファイルをgnuplotで表示してみる。</p>
+<p>温度を表示するためには</p>
+<pre><code>gnuplot </code></pre>
+<p>としてgnuplotを起動して</p>
+<pre><code>p &quot;ファイル名&quot; </code></pre>
+<p>と入力すればよい。
+デフォルトでは読み込んだファイルの一列目を横軸に、二列目を縦軸にして表示されている。
+いま、横軸がステップ数であることに注意せよ、実時間ではない。
+lammpsでは一ステップあたりの時間は<span
+class="math inline">0.005</span>で計算している。
+なにか問題があればlammpsの<code>in.melt</code>のなかで<code>timestep</code>コマンドをつかって数を調整する。
+横軸を実時間にしたいならば、ステップ数に<span
+class="math inline">0.005</span>をかければよい。 そのためには</p>
+<pre><code>gnuplot</code></pre>
+<p>でgnuplotを起動したあと</p>
+<pre><code>p &quot;filename&quot; u ($1*0.005):2</code></pre>
+<p>とすると良い。</p>
+<p>ほかの熱力学量が見たければ、</p>
+<pre><code>p &quot;filename&quot; u ($1*0.005):3</code></pre>
+<p>などとするとほかの列の熱力学量を縦軸にして表示することができる。</p>
+<p>もしもっとべつな熱力学量を計算したいときは、in.meltファイルのlammpsスクリプトに<code>thermo_style</code>コマンドで出力する熱力学量を指定することができる。</p>
+<h1 id="加村さんの研究について">加村さんの研究について</h1>
+<p>in.kmというファイルが配布された。
+これは二次元のシミュレーションであって、密度が<span
+class="math inline">0.62</span>温度が<span
+class="math inline">0.439</span>で粒子数は<span
+class="math inline">1024</span>である。</p>
+<p>このシミュレーションではN,V,Tが一定であるにもかかわらず、境界条件(箱の縦横比)
+をかえると熱力学量がかわってしまうことを確認する。</p>
+<p>いままではlammpsをシングルスレッドで動かしていたが、ここでは並列計算をさせる。
+そのために</p>
+<pre><code>mpirun -n 4 lmp_mpi -in in.melt</code></pre>
+<p>とする。</p>
+<h1 id="板書記録">板書記録</h1>
+<!-- ### １回目(2023年3月2日実施)
+
+![](img/1677754522104.jpg)
+![](img/1677754522192.jpg)
+![](img/1677754525198.jpg)
+ -->                    
+                </div>
+            </div>
+            <script src="https://vjs.zencdn.net/5.4.4/video.js"></script>
+        </div>
+    </body>
+</html>
