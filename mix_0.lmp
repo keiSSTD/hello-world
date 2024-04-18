@@ -1,0 +1,143 @@
+#なるべくベースとなるシミレーションとして
+variable rho equal 0.8
+variable t equal 0.4
+
+
+
+# Big colloid particles and small LJ particles
+
+units		lj
+atom_style	sphere
+dimension	2
+
+#正方格子を定義 boxで生成するとき
+#lattice		sq 0.4
+#自分で領域を設定するとき
+lattice sq ${rho}
+
+#各辺の長さを定義
+region		box block 0 80 0 60 -0.5 0.5
+
+#壁がない場合
+#boundary p p p
+
+#壁がある場合
+#boundary p f p
+
+#両壁
+boundary f f p
+
+#原子が二つあることを宣言
+create_box	2 box
+#原子１を作成
+#create_atoms	1 box
+
+#壁を頑張って避けて原子を作成する
+region box1 block 4 54 4 54 -0.5 0.5
+create_atoms 2 region box1
+
+#少ない原子
+region box2 block 70 75 30 40 -0.5 0.5
+create_atoms 1 region box2
+#create_atoms 1 single 60 30 0
+#create_atoms 1 single 70 40 0
+
+#全原子の打ち0.96%パーセントを原子２で置き換える。乱数シード23984を使う
+#set		group all type/fraction 1 0.05 23984
+
+#溶かす分子の質量を設定
+set		type 1 mass 1
+#溶媒分子の質量をmに設定
+set		type 2 mass 1
+
+#温度1.44 の速度をマクスウェル分布に従って与える
+velocity	all create ${t} 87287 loop geom
+
+# multi neighbor and comm for efficiency
+
+neighbor	1 multi
+neigh_modify	delay 0
+comm_modify     mode multi
+
+# colloid potential
+
+pair_style lj/cut 2.5
+pair_coeff 1 1 0.1 1.0
+pair_coeff 2 2 1.0 1.0
+pair_coeff 1 2 0.5 1.0
+
+#コロイド粒子と溶媒粒子の相互作用のカットオフ距離を12.5\sigmaに設定
+#pair_style	colloid 12.5
+#コロイド粒子同士の相互作用の設定、直径を1,ハミルトン係数を1,半径を5sigma,深さを5epsilon、カットオフ距離12.5\sigma
+#pair_coeff	1 1  1.0 1.0 5.0 5.0 12.5
+#コロイド粒子と溶媒粒子の相互作用を設定
+#pair_coeff	1 2  5.0 1.0 5.0 0.0 7.0
+#溶媒粒子同士の相互作用を設定
+#pair_coeff	2 2 10.0 1.0 0.0 0.0 2.5
+
+#ノセフーバー熱浴を適用、nvt
+fix 1 all nvt temp ${t} 0.4 1.0
+
+#ノセフーバー熱浴を適用、nptは周期境界条件でしか使っちゃいけないんかい？
+#fix		1 all npt temp 1.2 1.2 1.0 iso 0.10 0.10 10.0 drag 1.0 &
+#	        mtk no pchain 0 tchain 1
+
+#壁があるとき
+#fix 1 all nve
+
+#２次元に限定
+fix		2 all enforce2d
+
+#壁
+#fix 3 all wall/lj126 ylo EDGE 1.0 1.0 2.5
+#fix 4 all wall/lj126 yhi EDGE 1.0 1.0 2.5
+#fix 5 all wall/lj126 xlo EDGE 1.0 1.0 2.5
+#fix 6 all wall/lj126 xhi EDGE 1.0 1.0 2.5
+
+#谷の底で切る→上にシフトしてくれる、2^{\frac{1}{6}}\sigmaで
+#疎水壁
+fix 3 all wall/lj126 ylo EDGE 1.0 1.0 1.1
+fix 4 all wall/lj126 yhi EDGE 1.0 1.0 1.1
+fix 5 all wall/lj126 xlo EDGE 1.0 1.0 1.1
+fix 6 all wall/lj126 xhi EDGE 1.0 1.0 1.1
+
+#重力を試してみる
+fix 7 all gravity 0.01 vector -0.01 0.0 0.0 
+#origin 0.0 0.0 0.0
+
+
+
+#chunkコマンドを試してみる
+#compute mychunk all chunk/atom bin/1d x 1.0 5.0
+#compute mydens all property/chunk density/mass
+#compute mytemp all property/chunk temp
+#compute mypress all property/chunk press
+#fix 8 all ave/time 10 100 1000 mydens mytemp mypress file chunk.txt mode vector
+
+#compute 1 all chunk/atom bin/1d x lower 5.0
+#compute 2 all 
+
+
+#atom形式で1000ステップごとに出力
+dump		1 all atom 1000 dumpmix.lammpstrj
+
+#dump		2 all image 1000 image.*.jpg type type &
+#		zoom 1.5 center d 0.5 0.5 0.5
+#dump_modify	2 pad 5 adiam 1 5.0 adiam 2 1.5
+
+#dump		3 all movie 1000 movie.mpg type type &
+#		zoom 1.5 center d 0.5 0.5 0.5
+#dump_modify	3 pad 5 adiam 1 5.0 adiam 2 1.5
+
+
+
+
+
+thermo_style	custom step temp epair etotal press vol density
+thermo_modify norm no
+thermo		1000
+
+timestep	0.005
+
+run		200000
+
